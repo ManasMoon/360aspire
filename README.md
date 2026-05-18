@@ -5,7 +5,7 @@ A highly customized, high-end editorial style single-page landing page designed 
 This project was built from scratch with a strong focus on premium UI/UX, micro-interactions, responsive typography, and lightweight performance.
 
 ## 🚀 Live Demo
-<a href="https://your-github-username.github.io/360aspire/" target="_blank">
+<a href="https://manasmoon.github.io/360aspire/" target="_blank">
   <img src="https://img.shields.io/badge/Live%20Demo-⚡%20Visit%20Website-00A3FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
 </a>
 
