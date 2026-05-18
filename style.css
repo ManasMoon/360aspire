@@ -1,0 +1,652 @@
+/* ==========================================================================
+   Base Styles & Elite SaaS Variables
+   ========================================================================== */
+   :root {
+    /* Sapphire / Cyan Elite Palette */
+    --color-bg-sapphire: #060F1E; /* Deep Midnight Sapphire */
+    --color-accent-cyan: #00A3FF; /* Radiant Electric Blue / Cyan */
+    --color-white: #FFFFFF; /* Pure Alpine White */
+    
+    --color-text-main: #FFFFFF;
+    --color-text-muted: rgba(255, 255, 255, 0.7);
+    
+    /* Glowing Shadows & Radii */
+    --shadow-cyan-glow: 0 10px 40px rgba(0, 163, 255, 0.25);
+    --shadow-cyan-hover: 0 15px 50px rgba(0, 163, 255, 0.5);
+    --radius-pill: 100px;
+    --radius-card: 24px;
+    
+    /* Fluid Transitions */
+    --transition-elite: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-main);
+    background-color: var(--color-bg-sapphire);
+}
+
+body {
+    overflow-x: hidden;
+    line-height: 1.6;
+    background-color: var(--color-bg-sapphire);
+}
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-elite);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.relative-z {
+    position: relative;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   Ambient Background Animations (Floating Geometric Nodes)
+   ========================================================================== */
+.nodes-container {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 1; 
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.geo-node {
+    position: absolute;
+    background: radial-gradient(circle, rgba(0, 163, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(20px);
+    animation: drift linear infinite alternate;
+}
+
+.geo-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, rgba(0, 163, 255, 0.1), transparent);
+    height: 1px;
+    animation: pulse-line 4s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+    100% { transform: translate(50px, -50px) scale(1.2); opacity: 0.6; }
+}
+
+@keyframes pulse-line {
+    0% { opacity: 0.1; }
+    100% { opacity: 0.4; }
+}
+
+/* ==========================================================================
+   Typography & Spacing (Compact Flow)
+   ========================================================================== */
+/* Hardcoded Premium Font Hierarchy */
+h1, h2, h3, h4, .serif-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--color-text-main);
+    letter-spacing: -0.02em;
+}
+
+p, a, span, .sub-serif, .stat-text {
+    font-family: 'Inter', sans-serif;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Compact Desktop Spacing */
+.section-spacing {
+    padding: 100px 0;
+}
+
+.section-header {
+    margin-bottom: 60px;
+    position: relative;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-cyan);
+    color: var(--color-bg-sapphire);
+    padding: 14px 32px;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: var(--transition-elite);
+    box-shadow: var(--shadow-cyan-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-cyan-hover);
+    background: var(--color-white);
+}
+
+.btn-large {
+    padding: 18px 48px;
+    font-size: 1.125rem;
+}
+
+.btn-glow {
+    position: relative;
+}
+
+/* ==========================================================================
+   Header & Floating Pill Navbar
+   ========================================================================== */
+.navbar-wrapper {
+    position: fixed;
+    top: 24px;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    padding: 0 24px;
+}
+
+.nav-pill {
+    background: rgba(6, 15, 30, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 163, 255, 0.2);
+    border-radius: var(--radius-pill);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px 10px 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    width: 100%;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-text-main);
+}
+
+.logo-accent {
+    color: var(--color-accent-cyan);
+    font-family: 'Inter', sans-serif; /* Keep period sans-serif */
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: var(--color-white);
+    text-shadow: 0 0 15px rgba(0, 163, 255, 0.5);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    padding-right: 16px;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text-main);
+    transition: var(--transition-elite);
+}
+
+/* ==========================================================================
+   Full-Screen Immersive Hero Section
+   ========================================================================== */
+.fullscreen-hero {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    overflow: hidden;
+    
+    /* Fixed cinematic background */
+    background-image: url('images/hero-campus.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Linear Gradient Overlay for Legibility */
+.fullscreen-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(6, 15, 30, 0.95) 0%, rgba(6, 15, 30, 0.4) 60%, transparent 100%);
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 60px; /* Offset for header */
+}
+
+.hero-title {
+    font-size: 6rem;
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    text-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-size: 1.35rem;
+    margin: 0 auto 48px;
+    max-width: 700px;
+    text-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ==========================================================================
+   Glassmorphism Cards (Clean Sapphire Theme)
+   ========================================================================== */
+.glass-cards {
+    display: grid;
+    gap: 32px;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.glass-card {
+    position: relative;
+    padding: 56px 32px;
+    background: rgba(10, 25, 47, 0.6); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    text-align: left;
+    transition: var(--transition-elite);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 163, 255, 0.15);
+    border-color: rgba(0, 163, 255, 0.4);
+    background: rgba(10, 25, 47, 0.85);
+}
+
+.watermark-num {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    font-weight: 800;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.03);
+    z-index: 0;
+    user-select: none;
+    transition: var(--transition-elite);
+}
+
+.glass-card:hover .watermark-num {
+    -webkit-text-stroke: 2px rgba(0, 163, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.glass-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.glass-card p {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Roadmap Section (Glass Steps)
+   ========================================================================== */
+.steps-container-glass {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.glass-step {
+    position: relative;
+    padding: 40px 32px;
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-elite);
+    overflow: hidden;
+}
+
+.glass-step:hover {
+    border-top-color: var(--color-accent-cyan);
+    box-shadow: 0 -10px 30px rgba(0, 163, 255, 0.08);
+    transform: translateY(-5px);
+}
+
+.glass-step .watermark-num {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.02);
+    right: auto;
+}
+
+.glass-step:hover .watermark-num {
+    -webkit-text-stroke: 2px rgba(0, 163, 255, 0.05);
+}
+
+.step-content {
+    position: relative;
+    z-index: 1;
+}
+
+.step-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   Statistics Section
+   ========================================================================== */
+.stats-grid-glass {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: 8px;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(0, 163, 255, 0.4);
+}
+
+.stat-text {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent-cyan);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Infinite Testimonial Marquee (FULL WIDTH FIX)
+   ========================================================================== */
+.testimonials {
+    /* Prevent horizontal scrollbar on body */
+    overflow: hidden;
+    padding-bottom: 120px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%); /* Forcing full width escape from any container constraints */
+    margin-right: calc(-50vw + 50%);
+}
+
+.marquee-wrapper {
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 20px 0; 
+    /* Gradient masks for smooth fade in/out on edges */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 32px;
+    width: max-content;
+    animation: scroll-left 50s linear infinite; 
+    padding-left: 32px; /* Smooth spacing for the seamless loop */
+}
+
+/* Ensure seamless slide without pause */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Translates exactly half the width since we duplicated the 10 items to make 20 */
+        transform: translateX(calc(-50% - 16px)); 
+    }
+}
+
+.testimonial-card {
+    /* Override glass-card layout slightly for marquee */
+    width: 400px;
+    min-width: 400px;
+    padding: 40px 32px;
+    white-space: normal; /* Allow text to wrap inside card */
+    flex-shrink: 0;
+}
+
+.testimonial-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+    color: var(--color-accent-cyan);
+}
+
+.testimonial-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-white);
+}
+
+/* ==========================================================================
+   Footer CTA
+   ========================================================================== */
+.footer-cta {
+    padding: 120px 0 60px;
+    background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, transparent 100%);
+}
+
+.cta-content {
+    margin-bottom: 80px;
+}
+
+.footer-btn-wrapper {
+    margin-top: 40px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 32px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 32px;
+}
+
+.footer-links a:hover {
+    color: var(--color-white);
+}
+
+/* ==========================================================================
+   Staggered Animations
+   ========================================================================== */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.stagger-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Mobile Optimization (Compact Spacing)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero-title { font-size: 4.5rem; }
+    
+    .glass-cards, .grid-3, .steps-container-glass {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Compact Section Spacing */
+    .section-spacing {
+        padding: 60px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    .hero-content {
+        padding-top: 0;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem;
+        margin: 0 auto 32px;
+    }
+    
+    .nav-links, .nav-cta {
+        display: none; 
+    }
+    
+    .nav-pill {
+        padding-right: 24px; 
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-links.active {
+        display: flex;
+        position: fixed;
+        top: 90px;
+        left: 24px;
+        right: 24px;
+        background: rgba(6, 15, 30, 0.98);
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        padding: 40px;
+        border-radius: 20px;
+        border: 1px solid rgba(0, 163, 255, 0.2);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        text-align: center;
+        gap: 24px;
+    }
+    
+    .nav-links.active a {
+        font-size: 1.25rem;
+    }
+    
+    .stats-grid-glass {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .testimonial-card {
+        width: 320px;
+        min-width: 320px;
+        padding: 32px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 2.75rem; }
+    .section-title { font-size: 2.25rem; }
+    .stat-number { font-size: 3.5rem; }
+    .watermark-num { font-size: 6rem; }
+}
